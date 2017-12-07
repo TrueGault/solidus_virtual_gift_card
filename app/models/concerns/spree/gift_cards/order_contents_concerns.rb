@@ -24,9 +24,11 @@ module Spree
         update_success = super(params)
 
         if update_success && params[:line_items_attributes]
-          line_item = Spree::LineItem.find_by(id: params[:line_items_attributes][:id])
-          new_quantity = params[:line_items_attributes][:quantity].to_i
-          update_gift_cards(line_item, new_quantity)
+          params[:line_items_attributes].values.each do |line_item_attributes|
+            line_item = Spree::LineItem.find_by(id: line_item_attributes[:id])
+            new_quantity = line_item_attributes[:quantity].to_i
+            update_gift_cards(line_item, new_quantity)
+          end
         end
 
         update_success
@@ -81,4 +83,3 @@ module Spree
     end
   end
 end
-
