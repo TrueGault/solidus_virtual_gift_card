@@ -16,5 +16,16 @@ describe Spree::GiftCardMailer, type: :mailer do
         expect(subject.to).to contain_exactly('gift_card_tester@example.com')
       end
     end
+
+    context 'send to purchaser' do
+      before do
+        gift_card.update_attributes! send_to_purchaser: true
+        gift_card.line_item.order.update_attributes!(email: "gift_card_tester@example.com")
+      end
+
+      it 'will send to email on order' do
+        expect(subject.to).to contain_exactly 'gift_card_tester@example.com'
+      end
+    end
   end
 end

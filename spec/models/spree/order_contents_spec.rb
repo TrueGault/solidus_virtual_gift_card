@@ -18,6 +18,7 @@ describe Spree::OrderContents do
         "purchaser_name" => purchaser_name,
         "gift_message" => gift_message,
         "send_email_at" => send_email_at,
+        "send_to_purchaser" => '1',
       }
     }
   end
@@ -46,6 +47,7 @@ describe Spree::OrderContents do
           expect(gift_card.purchaser_name).to eq(purchaser_name)
           expect(gift_card.gift_message).to eq(gift_message)
           expect(gift_card.send_email_at).to eq(send_email_at.to_date)
+          expect(gift_card.send_to_purchaser).to eq true
         end
 
         context "#format_date" do

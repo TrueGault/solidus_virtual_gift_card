@@ -327,4 +327,18 @@ describe Spree::VirtualGiftCard do
       expect { subject }.to change { gift_card.sent_at }
     end
   end
+
+  describe 'details' do
+    let(:data) { subject.details }
+
+    it 'will return a string 1 if configured to send to purchaser' do
+      subject.send_to_purchaser = true
+      expect( data[:send_to_purchaser] ).to eq '1'
+    end
+
+    it 'will return a string 0 if configured to send to recipient' do
+      subject.send_to_purchaser = false
+      expect( data[:send_to_purchaser] ).to eq '0'
+    end
+  end
 end

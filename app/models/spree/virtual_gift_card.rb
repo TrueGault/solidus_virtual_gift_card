@@ -70,6 +70,7 @@ class Spree::VirtualGiftCard < Spree::Base
       recipient_name: recipient_name,
       purchaser_name: purchaser_name,
       gift_message: gift_message,
+      send_to_purchaser: send_to_purchaser ? '1' : '0',
       send_email_at: send_email_at,
       formatted_send_email_at: formatted_send_email_at
     }
