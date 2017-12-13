@@ -4,7 +4,7 @@
 
 <%= render partial: 'lookup_form' %>
 
-<%= paginate @gift_cards %>
+<%= paginate @gift_cards, theme: 'solidus_admin' %>
 
 <% if @gift_cards.any? %>
   <table class="index">
@@ -43,4 +43,4 @@
   </table>
 <% end %>
 
-<%= paginate @gift_cards %>
+<%= paginate @gift_cards, theme: 'solidus_admin' %>
