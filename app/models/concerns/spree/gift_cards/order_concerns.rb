@@ -25,7 +25,7 @@ module Spree
         super
         inventory_units = self.inventory_units
         gift_cards.each_with_index do |gift_card, index|
-          gift_card.make_redeemable!(purchaser: user, inventory_unit: inventory_units[index])
+          gift_card.make_redeemable!(purchaser: guest_or_user, inventory_unit: inventory_units[index])
         end
       end
 
